@@ -1,47 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   command_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 18:24:18 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/30 23:08:11 by luide-so         ###   ########.fr       */
+/*   Created: 2023/05/30 23:52:01 by luide-so          #+#    #+#             */
+/*   Updated: 2023/05/31 00:47:57 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	append_node(t_node **head, int value)
+void	rotate(t_node **stack)
 {
-	t_node	*new;
+	t_node	*tmp;
 	t_node	*last;
 
-	new = (t_node *)malloc(sizeof(t_node));
-	if (!new)
-		error_exit(head);
-	new->value = value;
-	new->next = NULL;
-	if (!*head)
-	{
-		*head = new;
+	if (!*stack || !(*stack)->next)
 		return ;
-	}
-	last = *head;
+	tmp = *stack;
+	*stack = (*stack)->next;
+	last = *stack;
 	while (last->next)
 		last = last->next;
-	last->next = new;
+	last->next = tmp;
+	tmp->next = NULL;
 }
 
-int	stack_size(t_node *stack)
+void	ra(t_node **a)
 {
-	int	size;
+	rotate(a);
+	write(1, "ra\n", 3);
+}
 
-	size = 0;
-	while (stack)
-	{
-		stack = stack->next;
-		++size;
-	}
-	return (size);
+void	rb(t_node **b)
+{
+	rotate(b);
+	write(1, "rb\n", 3);
+}
+
+void	rr(t_node **a, t_node **b)
+{
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
 }

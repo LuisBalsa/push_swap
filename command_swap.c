@@ -1,47 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   command_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 18:24:18 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/30 23:08:11 by luide-so         ###   ########.fr       */
+/*   Created: 2023/05/30 22:37:24 by luide-so          #+#    #+#             */
+/*   Updated: 2023/05/31 00:41:19 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	append_node(t_node **head, int value)
+void	swap(t_node **stack)
 {
-	t_node	*new;
-	t_node	*last;
+	t_node	*tmp;
 
-	new = (t_node *)malloc(sizeof(t_node));
-	if (!new)
-		error_exit(head);
-	new->value = value;
-	new->next = NULL;
-	if (!*head)
-	{
-		*head = new;
+	if (!*stack || !(*stack)->next)
 		return ;
-	}
-	last = *head;
-	while (last->next)
-		last = last->next;
-	last->next = new;
+	tmp = *stack;
+	*stack = (*stack)->next;
+	tmp->next = (*stack)->next;
+	(*stack)->next = tmp;
 }
 
-int	stack_size(t_node *stack)
+void	sa(t_node	**a)
 {
-	int	size;
+	swap(a);
+	write(1, "sa\n", 3);
+}
 
-	size = 0;
-	while (stack)
-	{
-		stack = stack->next;
-		++size;
-	}
-	return (size);
+void	sb(t_node	**b)
+{
+	swap(b);
+	write(1, "sb\n", 3);
+}
+
+void	ss(t_node	**a, t_node	**b)
+{
+	swap(a);
+	swap(b);
+	write(1, "ss\n", 3);
 }

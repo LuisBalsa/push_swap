@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 21:02:39 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/30 22:19:30 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/31 00:37:19 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,17 +95,14 @@ int	main(int argc, char **argv)
 	if (!is_sorted(a))
 	{
 		if (stack_size(a) == 2)
-			printarray(a); //sa(&a, false);
+			sa(&a);
 		else if (stack_size(a) == 3)
-			printarray(a); //sort_tree(&a);
+			sort_tree(&a);
 		else
 			printarray(a); //push_swap(&a, &b);
 	}
-	else
-	{
-	printf("Sorted:\n");
+	printf("\nResultado:\n");
 	printarray(a);
-	}
 	free_stack(&a);
 	return (0);
 }

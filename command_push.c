@@ -1,47 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   command_push.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 18:24:18 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/30 23:08:11 by luide-so         ###   ########.fr       */
+/*   Created: 2023/05/30 23:48:59 by luide-so          #+#    #+#             */
+/*   Updated: 2023/05/31 00:48:42 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	append_node(t_node **head, int value)
+void	push(t_node **src, t_node **dst)
 {
-	t_node	*new;
-	t_node	*last;
+	t_node	*tmp;
 
-	new = (t_node *)malloc(sizeof(t_node));
-	if (!new)
-		error_exit(head);
-	new->value = value;
-	new->next = NULL;
-	if (!*head)
-	{
-		*head = new;
+	if (!*src)
 		return ;
-	}
-	last = *head;
-	while (last->next)
-		last = last->next;
-	last->next = new;
+	tmp = *src;
+	*src = (*src)->next;
+	tmp->next = *dst;
+	*dst = tmp;
 }
 
-int	stack_size(t_node *stack)
+void	pa(t_node **a, t_node **b)
 {
-	int	size;
+	push(b, a);
+	write(1, "pa\n", 3);
+}
 
-	size = 0;
-	while (stack)
-	{
-		stack = stack->next;
-		++size;
-	}
-	return (size);
+void	pb(t_node **a, t_node **b)
+{
+	push(a, b);
+	write(1, "pb\n", 3);
 }

@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/30 10:08:54 by luide-so          #+#    #+#              #
-#    Updated: 2023/05/30 22:25:32 by luide-so         ###   ########.fr        #
+#    Updated: 2023/05/30 23:51:23 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 # Sources to objects
-SRC_FILES = push_swap stack_utils push_swap_utils sort 
+SRC_FILES = push_swap stack_utils push_swap_utils sort command_push command_swap command_rotate command_reverse_rotate
 SRC = $(addsuffix .c, $(SRC_FILES))
 OBJ = $(addsuffix .o, $(SRC_FILES))
 

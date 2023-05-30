@@ -6,31 +6,31 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 20:39:49 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/30 12:10:28 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/31 00:50:40 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool    is_sorted(t_node *stack)
+bool	is_sorted(t_node *stack)
 {
-    while (stack->next)
-    {
-        if (stack->value > stack->next->value)
-            return (false);
-        stack = stack->next;
-    }
-    return (true);
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
 }
 
-/* void    sort_tree(t_node **stack)
+void	sort_tree(t_node **stack)
 {
 	t_node	*highest_node;
 	t_node	*temp;
 	int		highest;
 
 	highest = INT_MIN;
-    temp = *stack;
+	temp = *stack;
 	while (temp)
 	{
 		if (temp->value > highest)
@@ -41,10 +41,9 @@ bool    is_sorted(t_node *stack)
 		temp = temp->next;
 	}
 	if (*stack == highest_node)
-		ra(stack, false);
+		ra(stack);
 	else if ((*stack)->next == highest_node)
-		rra(stack, false);
+		rra(stack);
 	if ((*stack)->value > (*stack)->next->value)
-		sa(stack, false);
+		sa(stack);
 }
- */
