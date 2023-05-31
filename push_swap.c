@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 21:02:39 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/31 00:37:19 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:51:11 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	error_free(t_node **a, char **argv, bool argc_2)
 	if (argc_2)
 		free_array(argv);
 	free_stack(a);
-	write(2, "Error\n", 6);
+	ft_putendl_fd("Error", 2);
 	exit(1);
 }
 
@@ -83,10 +83,10 @@ static void	stack_init(t_node **a, char **argv, bool argc_2)
 int	main(int argc, char **argv)
 {
 	t_node	*a;
-	//t_node	*b;
+	t_node	*b;
 
 	a = NULL;
-	//b = NULL;
+	b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	if (argc == 2)
@@ -95,11 +95,11 @@ int	main(int argc, char **argv)
 	if (!is_sorted(a))
 	{
 		if (stack_size(a) == 2)
-			sa(&a);
+			move(&a, &b, SA);
 		else if (stack_size(a) == 3)
 			sort_tree(&a);
 		else
-			printarray(a); //push_swap(&a, &b);
+			printarray(a); //sort(&a, &b);
 	}
 	printf("\nResultado:\n");
 	printarray(a);

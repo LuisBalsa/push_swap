@@ -6,16 +6,17 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/30 10:08:54 by luide-so          #+#    #+#              #
-#    Updated: 2023/05/30 23:51:23 by luide-so         ###   ########.fr        #
+#    Updated: 2023/05/31 17:25:43 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 # Variables
 NAME = push_swap
+HEADER = push_swap.h
 LIBNAME = libft
 LIBDIR = libft/
-LIB_FLAGS = -L. -l$(NAME) -L./$(LIBDIR) -lft 
+LIB_FLAGS = -L. -l$(NAME) -L./$(LIBDIR) -lft
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -fsanitize=address -fsanitize=leak -g
 AR = ar rcs
@@ -34,7 +35,7 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 # Sources to objects
-SRC_FILES = push_swap stack_utils push_swap_utils sort command_push command_swap command_rotate command_reverse_rotate
+SRC_FILES = push_swap stack_utils push_swap_utils sort commands
 SRC = $(addsuffix .c, $(SRC_FILES))
 OBJ = $(addsuffix .o, $(SRC_FILES))
 
@@ -50,7 +51,7 @@ $(NAME) : $(OBJ)
 	@ echo "$(GREEN)Everything is ready to use!$(DEF_COLOR)"
 	@ echo "$(YELLOW)Run ./$(NAME) plus numeric argument/s to start$(DEF_COLOR)"
 
-%.o : %.c
+%.o : %.c $(HEADER)
 	@ echo "$(YELLOW)Compiling: $<$(DEF_COLOR)"
 	@ $(CC) $(CFLAGS) $(HDR) -c $< -o $@
 	@ echo "$(GREEN)Object files created with sucess$(DEF_COLOR)"
@@ -75,16 +76,5 @@ fclean : clean
 re : fclean all
 
 # bonus:
-
-git :
-	@ clear && sleep 1 && echo "$(RED)\n\n\n\nStart cleanning...\n\n" && sleep 1
-	@ make fclean
-	@ echo "$(CYAN)\n\n\n\nEverything clean\n\n\n$(GREEN)Git status:\n\n$(DEF_COLOR)"
-	@ git status && sleep 1 && echo "$(RED)Press Enter to confirm" && read enter
-	@ echo "$(DEF_COLOR)\nGit add everything\n\n"
-	@ git add . && git status
-	@ echo "$(YELLOW)" && read -p "Enter commit message: " message && read -p "Enter commit comment: " comment && git commit -m "$message" -m "$comment"
-	@ echo "$(GRAY)" && git push
-	@ echo "$(GREEN)\n\nGit push done with sucess\n\n$(DEF_COLOR)"
 
 .PHONY:		all clean fclean re
