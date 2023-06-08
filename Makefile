@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/30 10:08:54 by luide-so          #+#    #+#              #
-#    Updated: 2023/06/01 01:56:47 by luide-so         ###   ########.fr        #
+#    Updated: 2023/05/31 17:25:43 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBNAME = libft
 LIBDIR = libft/
 LIB_FLAGS = -L. -l$(NAME) -L./$(LIBDIR) -lft
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -fsanitize=leak -g
 AR = ar rcs
 RM = rm -f
 HDR = -I.
@@ -35,7 +35,7 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 # Sources to objects
-SRC_FILES = push_swap push_swap_utils stack_utils sort sort_utils commands move_nodes
+SRC_FILES = push_swap stack_utils push_swap_utils sort commands
 SRC = $(addsuffix .c, $(SRC_FILES))
 OBJ = $(addsuffix .o, $(SRC_FILES))
 

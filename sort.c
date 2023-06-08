@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 20:39:49 by luide-so          #+#    #+#             */
-/*   Updated: 2023/06/01 02:58:59 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:51:56 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void	sort_tree(t_node **stack)
 		move(stack, stack, SA);
 }
 
-void	sort_five(t_node **a, t_node **b)
+void	sorte_five(t_node **a, t_node **b)
 {
 	while (stack_size(*a) > 3)
 	{
 		init_nodes(*a, *b);
-		finish_rotation(a, find_smallest(*a), RA, RRA);
-		move(a, b, PB);
+		finish_rotation(a, find_smallest(*a), 'a');
+		push(a, b, &push_func, PB);
 	}
 }
 
@@ -65,11 +65,11 @@ void	sort(t_node **a, t_node **b)
 
 	len_a = stack_size(*a);
 	if (len_a == 5)
-		sort_five(a, b);
+		sorte_five(a, b);
 	else
 	{
 		while (len_a-- > 3)
-			move(a, b, PB);
+			pb(b, a, false);
 	}
 	sort_tree(a);
 	while (*b)
@@ -81,8 +81,8 @@ void	sort(t_node **a, t_node **b)
 	smallest = find_smallest(*a);
 	if (smallest->bottom)
 		while (*a != smallest)
-			move(a, a, RRA);
+			move_one(a, &reverse_rotate, RRA);
 	else
 		while (*a != smallest)
-			move(a, a, RA);
+			move_one(a, &rotate, RA);
 }
