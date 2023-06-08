@@ -6,21 +6,11 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 21:02:39 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/31 17:51:11 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/06/07 21:46:34 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	printarray(t_node *a)
-{
-	while (a)
-	{
-		ft_putnbr_fd(a->value, 1);
-		write(1, "\n", 1);
-		a = a->next;
-	}
-}
 
 static int	error_repetition(t_node *a, int nbr)
 {
@@ -35,7 +25,6 @@ static int	error_repetition(t_node *a, int nbr)
 
 static void	error_free(t_node **a, char **argv, bool argc_2)
 {
-	(void) argc_2, (void) argv, (void) a;
 	if (argc_2)
 		free_array(argv);
 	free_stack(a);
@@ -87,8 +76,10 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	if (argc == 1)
 		return (1);
+	if (argc == 2 && !argv[1][0])
+		error_exit();
 	if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	stack_init(&a, argv + !(argc == 2), argc == 2);
@@ -99,10 +90,8 @@ int	main(int argc, char **argv)
 		else if (stack_size(a) == 3)
 			sort_tree(&a);
 		else
-			printarray(a); //sort(&a, &b);
+			sort(&a, &b);
 	}
-	printf("\nResultado:\n");
-	printarray(a);
 	free_stack(&a);
 	return (0);
 }

@@ -6,11 +6,17 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:03:35 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/31 00:49:46 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/31 23:51:01 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	error_exit(void)
+{
+	ft_putendl_fd("Error", 2);
+	exit(1);
+}
 
 void	free_stack(t_node **a)
 {
@@ -32,12 +38,6 @@ void	free_array(char **argv)
 	while (argv[i])
 		free(argv[i++]);
 	free(argv);
-}
-
-void	error_exit(t_node **a)
-{
-	free_stack(a);
-	exit(1);
 }
 
 long	ft_atol(const char *str)

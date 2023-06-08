@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 21:04:51 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/31 17:20:27 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/05/31 23:50:39 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,22 @@ typedef struct node
 void	free_stack(t_node **a);
 void	free_array(char **argv);
 long	ft_atol(const char *str);
+void	error_exit(void);
 void	append_node(t_node **head, int value);
-void	sort_tree(t_node **stack);
-bool	is_sorted(t_node *stack);
 int		stack_size(t_node *stack);
-void	error_exit(t_node **a);
+void	sort(t_node **a, t_node **b);
+void	sort_tree(t_node **stack);
+void	sort_five(t_node **a, t_node **b);
+bool	is_sorted(t_node *stack);
+void	set_current_position(t_node *stack);
+t_node	*find_smallest(t_node *stack);
+void	init_nodes(t_node *a, t_node *b);
 void	swap(t_node **a, t_node **b, char *cmd);
 void	push_func(t_node **src, t_node **dst);
 void	rotate(t_node **a, t_node **b, char *cmd);
 void	reverse_rotate(t_node **a, t_node **b, char *cmd);
 void	move(t_node **first, t_node **second, char *cmd);
+void	move_nodes(t_node **a, t_node **b);
+void	finish_rotation(t_node **stack, t_node *cheap, char *rx, char *rrx);
 
 #endif
