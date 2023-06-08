@@ -1,1 +1,9 @@
-Push-Swap-Tester_gemartin/ files/ pro_checker push_swap_test.sh push_swap_tester_fu/ push_swap_test_linux.sh
+Push-Swap-Tester_gemartin/
+files/
+pro_checker
+push_swap_test.sh
+push_swap_tester_fu/
+push_swap_test_linux.sh
+push_swap_tester_fu
+*.o
+push_swap
