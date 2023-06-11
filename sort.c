@@ -6,22 +6,11 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 20:39:49 by luide-so          #+#    #+#             */
-/*   Updated: 2023/06/01 02:58:59 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/06/10 11:10:03 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-bool	is_sorted(t_node *stack)
-{
-	while (stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (false);
-		stack = stack->next;
-	}
-	return (true);
-}
 
 void	sort_tree(t_node **stack)
 {

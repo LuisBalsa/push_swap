@@ -7,3 +7,7 @@ push_swap_test_linux.sh
 push_swap_tester_fu
 *.o
 push_swap
+libpush_swap.a
+libft/libft.a
+checker
+Readme notes

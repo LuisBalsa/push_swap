@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 21:04:51 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/31 23:50:39 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:42:34 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,14 @@ void	set_current_position(t_node *stack);
 t_node	*find_smallest(t_node *stack);
 void	init_nodes(t_node *a, t_node *b);
 void	swap(t_node **a, t_node **b, char *cmd);
-void	push_func(t_node **src, t_node **dst);
+void	push_func(t_node **src, t_node **dst, char *cmd);
 void	rotate(t_node **a, t_node **b, char *cmd);
 void	reverse_rotate(t_node **a, t_node **b, char *cmd);
 void	move(t_node **first, t_node **second, char *cmd);
 void	move_nodes(t_node **a, t_node **b);
 void	finish_rotation(t_node **stack, t_node *cheap, char *rx, char *rrx);
+void	error_free(t_node **a, char **argv, bool argc_2);
+int		error_repetition(t_node *a, int nbr);
+int		error_syntax(char *nbr);
 
 #endif

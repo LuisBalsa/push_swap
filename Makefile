@@ -6,17 +6,19 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/30 10:08:54 by luide-so          #+#    #+#              #
-#    Updated: 2023/06/01 01:56:47 by luide-so         ###   ########.fr        #
+#    Updated: 2023/06/10 11:09:19 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 # Variables
 NAME = push_swap
+BONUS = checker
 HEADER = push_swap.h
+HEADER_BONUS = checker.h
 LIBNAME = libft
 LIBDIR = libft/
-LIB_FLAGS = -L. -l$(NAME) -L./$(LIBDIR) -lft
+LIB_FLAGS = -L $(LIBDIR) -lft
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 AR = ar rcs
@@ -35,18 +37,20 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 # Sources to objects
-SRC_FILES = push_swap push_swap_utils stack_utils sort sort_utils commands move_nodes
+
+SRC_FILES = push_swap push_swap_utils stack_utils sort sort_utils commands move_nodes error
 SRC = $(addsuffix .c, $(SRC_FILES))
 OBJ = $(addsuffix .o, $(SRC_FILES))
+SRC_BONUS_FILES = checker stack_utils commands error get_next_line get_next_line_utils push_swap_utils
+SRC_BONUS = $(addsuffix .c, $(SRC_BONUS_FILES))
+OBJ_BONUS = $(addsuffix .o, $(SRC_BONUS_FILES))
 
 # Rules
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) $(HEADER)
 	@ make -s bonus -C $(LIBNAME)
 	@ echo "$(GREEN)Made $(LIBNAME).a with sucess$(DEF_COLOR)"
-	@ $(AR) $(addprefix lib, $(addsuffix .a, $(NAME))) $(OBJ)
-	@ echo "$(GREEN)Updated $(addprefix lib, $(addsuffix .a, $(NAME)))$(DEF_COLOR)"
-	@ $(CC) $(CFLAGS) $(HDR) $(LIB_FLAGS) -o $(NAME)
+	@ $(CC) $(CFLAGS) $(HDR) $(OBJ) $(LIB_FLAGS) -o $(NAME)
 	@ echo "$(BLUE)Compiled $(NAME) with sucess!$(DEF_COLOR)"
 	@ echo "$(GREEN)Everything is ready to use!$(DEF_COLOR)"
 	@ echo "$(YELLOW)Run ./$(NAME) plus numeric argument/s to start$(DEF_COLOR)"
@@ -65,16 +69,21 @@ clean :
 	@ echo "$(RED)Removed $(LIBNAME) object files$(DEF_COLOR)"
 
 fclean : clean
-	@ $(RM) $(NAME)
+	@ $(RM)  $(NAME)
 	@ echo "$(RED)Removed '$(NAME)' with sucess$(DEF_COLOR)"
-	@ $(RM) $(addprefix lib, $(addsuffix .a, $(NAME)))
-	@ echo "$(RED)Removed '$(addprefix lib, $(addsuffix .a, $(NAME)))' with sucess$(DEF_COLOR)"
+	@ $(RM)  $(BONUS)
+	@ echo "$(RED)Removed '$(BONUS)' with sucess$(DEF_COLOR)"
 	@ ${MAKE} -s fclean -C $(LIBNAME)
 	@ echo "$(RED)Removed '$(LIBNAME).a' with sucess$(DEF_COLOR)"
 	@ echo "$(RED)Everything clean$(DEF_COLOR)"
 
 re : fclean all
 
-# bonus:
+bonus : $(OBJ_BONUS)  $(HEADER_BONUS)
+	@ make -s bonus -C $(LIBNAME)
+	@ echo "$(GREEN)Made $(LIBNAME).a with sucess$(DEF_COLOR)"
+	@ $(CC) $(CFLAGS) $(HDR) $(OBJ_BONUS) $(LIB_FLAGS) -o $(BONUS)
+	@ echo "$(BLUE)Compiled $(BONUS) with sucess!$(DEF_COLOR)"
+	@ echo "$(GREEN)Everything is ready to use!$(DEF_COLOR)"
 
-.PHONY:		all clean fclean re
+.PHONY: all clean fclean re

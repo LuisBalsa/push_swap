@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:24:18 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/31 23:48:42 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/06/10 11:10:29 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,17 @@ int	stack_size(t_node *stack)
 		++size;
 	}
 	return (size);
+}
+
+bool	is_sorted(t_node *stack)
+{
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
 }
 
 t_node	*find_smallest(t_node *stack)

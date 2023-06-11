@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:43:01 by luide-so          #+#    #+#             */
-/*   Updated: 2023/05/31 22:44:20 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:49:47 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ void	move_nodes(t_node **a, t_node **b)
 	}
 	finish_rotation(b, cheapest, RB, RRB);
 	finish_rotation(a, cheapest->target, RA, RRA);
-	move(b, a, PA);
+	move(a, b, PA);
 }
