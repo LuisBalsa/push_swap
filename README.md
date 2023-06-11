@@ -174,3 +174,83 @@ K --> H((End))
 ```
 
 ---
+# **Algorithm**
+
+The sorting algorithm used in my code follows a combination of techniques to sort the stack of integers. Here's an explanation of the logic behind the sorting algorithm:
+
+1. **Initialization**:
+   - The `stack_init` function reads the input integers and initializes Stack A.
+   - It performs error checks for syntax, number range, and repetition.
+   - The main function initializes Stack A and Stack B.
+
+2. **Sorting**:
+   - If Stack A is not already sorted (`!is_sorted(a)`), the sorting algorithm proceeds.
+   - The algorithm differentiates between the sizes of Stack A to determine the sorting strategy:
+     - If the size of Stack A is 2, the `move` function is called to perform the `SA` operation.
+     - If the size of Stack A is 3, the `sort_tree` function is called to sort the three elements using specific operations.
+     - For stack sizes greater than 3, the `sort` function is called to sort the stack using a combination of operations.
+
+3. **Sort Tree**:
+   - The `sort_tree` function finds the highest value in Stack A and determines its position relative to the top and the bottom of the stack.
+   - Based on the position, the function performs the necessary rotations (`RA` or `RRA`) to bring the highest value to the top.
+   - If the top two elements of Stack A are out of order, the function performs the `SA` operation to swap them.
+
+4. **Sort Five**:
+   - The `sort_five` function is called when the size of Stack A is 5.
+   - It moves elements from Stack A to Stack B until only three elements remain in Stack A.
+   - The `init_nodes` function initializes the nodes in both stacks to calculate prices and target nodes.
+   - The `finish_rotation` function performs rotations (`RA` or `RRA`) to bring the target node to the top of Stack A.
+   - The `move` function is used to move elements from Stack B to Stack A (`PA` operation).
+
+5. **Sort (for sizes greater than 5)**:
+   - The `sort` function is called for stack sizes greater than 5.
+   - It moves elements from Stack A to Stack B until only three elements remain in Stack A.
+   - The `move` function is used to move elements from Stack A to Stack B (`PB` operation).
+   - The `sort_tree` function is called to sort the remaining three elements in Stack A.
+   - The `move_nodes` function is called to move elements from Stack B back to Stack A (`PA` operation) based on their target nodes and prices.
+   - The `set_current_position` function sets the position and bottom status of each node in Stack A.
+   - The `find_smallest` function is used to find the smallest element in Stack A.
+   - The `move` function is used to perform rotations (`RA` or `RRA`) to bring the smallest element to the top of Stack A.
+
+6. **Stack Utilities**:
+   - The `stack_utils` module provides utility functions to manipulate stacks, such as appending nodes, determining stack size, checking for sorting, and finding the smallest node.
+
+7. **Move Nodes**:
+   - The `move_nodes` function is responsible for moving nodes between Stack A and Stack B based on their target nodes and prices.
+   - The `return_cheapest` function finds the node in Stack B with the lowest price.
+   - The `finish_rotation` function performs rotations (`RB` or `RRB`) to bring the cheapest node in Stack B to its target position.
+   - The `move` function is used to move the node from Stack B to
+
+ Stack A (`PA` operation).
+
+8. **Sort Utilities**:
+   - The `init_nodes` function initializes the nodes in both stacks to calculate prices and target nodes.
+   - The `set_current_position` function sets the position and bottom status of each node in both stacks.
+   - The `set_target_node` function determines the target node for each node in Stack B by finding the nearest larger value in Stack A.
+   - The `set_price` function assigns a price value to each node in Stack B based on its position, target position, and bottom status.
+
+The flowchart below represents the logical flow of the sorting algorithm:
+
+```mermaid
+graph
+    A[Start] --> B{Size of Stack A}
+    B -- Size is 2 --> C[Perform SA]
+    B -- Size is 3 --> D[Perform sort_tree]
+    B -- Size > 3 --> E[Perform sort]
+    D --> F{Top 2 elements in order?}
+    F -- No --> G[Perform SA]
+    F -- Yes --> H[Perform rotations]
+    E --> I[Move elements to Stack B]
+    I --> J{Size of Stack A}
+    J -- Size is 3 --> K[Perform sort_tree]
+    J -- Size > 3 --> E
+    K --> L[Move elements to Stack B]
+    L --> M[Sort elements in Stack B]
+    M --> N[Move elements to Stack A]
+    N --> O[Perform rotations]
+    O --> P{All elements sorted?}
+    P -- No --> E
+    P -- Yes --> Q[End]
+```
+
+This flowchart illustrates the decision-making process based on the size of Stack A and the state of the elements during the sorting algorithm.
