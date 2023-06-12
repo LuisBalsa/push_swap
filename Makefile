@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/30 10:08:54 by luide-so          #+#    #+#              #
-#    Updated: 2023/06/10 11:09:19 by luide-so         ###   ########.fr        #
+#    Updated: 2023/06/12 12:27:07 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME = push_swap
 BONUS = checker
 HEADER = push_swap.h
-HEADER_BONUS = checker.h
+HEADER_BONUS = checker_bonus.h
 LIBNAME = libft
 LIBDIR = libft/
 LIB_FLAGS = -L $(LIBDIR) -lft
@@ -41,7 +41,7 @@ WHITE = \033[0;97m
 SRC_FILES = push_swap push_swap_utils stack_utils sort sort_utils commands move_nodes error
 SRC = $(addsuffix .c, $(SRC_FILES))
 OBJ = $(addsuffix .o, $(SRC_FILES))
-SRC_BONUS_FILES = checker stack_utils commands error get_next_line get_next_line_utils push_swap_utils
+SRC_BONUS_FILES = checker_bonus stack_utils_bonus commands_bonus error_bonus get_next_line_bonus get_next_line_utils_bonus push_swap_utils_bonus
 SRC_BONUS = $(addsuffix .c, $(SRC_BONUS_FILES))
 OBJ_BONUS = $(addsuffix .o, $(SRC_BONUS_FILES))
 
