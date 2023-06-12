@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:24:18 by luide-so          #+#    #+#             */
-/*   Updated: 2023/06/10 11:10:29 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/06/12 11:27:22 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	append_node(t_node **head, int value)
 	if (!new)
 		error(head);
 	new->value = value;
+	new->final_index = 0;
 	new->next = NULL;
 	if (!*head)
 	{
