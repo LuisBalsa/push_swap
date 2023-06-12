@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/30 10:08:54 by luide-so          #+#    #+#              #
-#    Updated: 2023/06/12 12:27:07 by luide-so         ###   ########.fr        #
+#    Updated: 2023/06/12 12:57:50 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,8 @@ all : $(NAME)
 clean :
 	@ $(RM) -rf $(OBJ)
 	@ echo "$(RED)Removed $(NAME) object files$(DEF_COLOR)"
+	@ $(RM) -rf $(OBJ_BONUS)
+	@ echo "$(RED)Removed $(BONUS) object files$(DEF_COLOR)"
 	@ ${MAKE} -s clean -C $(LIBNAME)
 	@ echo "$(RED)Removed $(LIBNAME) object files$(DEF_COLOR)"
 
