@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 18:03:20 by luide-so          #+#    #+#             */
-/*   Updated: 2023/06/12 12:22:02 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:50:48 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ static void	move_checker(t_node **first, t_node **second, char *cmd)
 		|| !ft_strncmp(cmd, RRB, ft_strlen(RRB))
 		|| !ft_strncmp(cmd, RRR, ft_strlen(RRR)))
 		reverse_rotate(first, second, cmd);
+	else
+	{
+		free(cmd);
+		error_exit();
+	}
 }
 
 static void	checker(t_node **a, t_node **b)

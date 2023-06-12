@@ -6,7 +6,7 @@
 #    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/30 10:08:54 by luide-so          #+#    #+#              #
-#    Updated: 2023/06/12 12:57:50 by luide-so         ###   ########.fr        #
+#    Updated: 2023/06/12 19:14:49 by luide-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBNAME = libft
 LIBDIR = libft/
 LIB_FLAGS = -L $(LIBDIR) -lft
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 AR = ar rcs
 RM = rm -f
 HDR = -I.
