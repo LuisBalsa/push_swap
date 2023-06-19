@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 18:03:20 by luide-so          #+#    #+#             */
-/*   Updated: 2023/06/12 18:50:48 by luide-so         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:35:57 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	move_checker(t_node **first, t_node **second, char *cmd)
 	else
 	{
 		free(cmd);
+		free_stack(first);
+		free_stack(second);
 		error_exit();
 	}
 }
