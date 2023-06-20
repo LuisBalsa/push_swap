@@ -37,6 +37,27 @@ The program will output a series of operations that need to be performed on the 
 - `rrb`: Rotate stack B downwards (the last element becomes the first).
 - `rrr`: Perform `rra` and `rrb` simultaneously.
 
+## Test the number of operations
+
+To test the number of operations performed by the `push_swap` program, you can use the following command:
+
+```bash
+nums=$(shuf -i 1-1000000 -n 500 | tr '\n' ' ') ; ./push_swap $nums | wc -l
+```
+
+This command consists of several parts:
+
+1. `nums=$(shuf -i 1-1000000 -n 500 | tr '\n' ' ')` generates a sequence of 500 random numbers between 1 and 1,000,000 using the `shuf` command. These numbers are then stored in the variable `nums` as a space-separated string.
+
+   - `shuf -i 1-1000000 -n 500` generates 500 random numbers between 1 and 1,000,000.
+   - `tr '\n' ' '` replaces the newline characters with spaces to create a single-line string.
+
+2. `./push_swap $nums` executes the `push_swap` program with the generated numbers as input. The `push_swap` program is expected to take the provided numbers and perform a series of operations to sort them.
+
+3. `wc -l` counts the number of lines in the output of the `push_swap` program. Since each line represents an operation, this gives you the total number of operations performed.
+
+By running this command, you can measure the efficiency of the `push_swap` program in terms of the number of operations it takes to sort a given set of numbers.
+
 ## Bonus: Checker
 
 The project also includes making a bonus program called `checker`, which allows you to verify if a given list of operations correctly sorts a stack. To use the `checker` program, follow these steps:
